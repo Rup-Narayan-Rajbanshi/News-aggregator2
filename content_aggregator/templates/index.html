@@ -1,0 +1,68 @@
+{% extends 'index_base.html' %}
+
+{% block content %}
+{% if error_message %}
+<div class="alert alert-danger" role="alert">
+  {{ error_message }}
+</div>
+{% endif %}
+
+<div class="jumbotron" style="padding: 1rem 2rem;">
+    <center><h1>News Aggregator</h1>
+        <a href="{% url 'index'%}" class="btn-sm btn-danger">Refresh News</a>
+        <a href='{% url "web_scrap:list" %}' class="btn-sm btn-danger">View All News</a>
+</center>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <img class="img-fluid" src="{{logo}}" alt="IMG-PRODUCT">
+            <div class='row'>
+                <div class="col-3"><a href="{{news_link}}" target="_blank">
+                    <img class="img-fluid" src="{{news_image}}" alt="IMG-PRODUCT"></a>
+                </div>
+                <div class="col-9">
+                    <h5><a href="{{news_link}}" target="_blank">{{news_topic}}</a></h5>
+                    <p>{{news_text}}</p>
+                </div>
+            </div>
+            <hr>
+
+            {% for news in news_list %}
+            <div class='row'>
+                <div class="col-3">
+                    <a href="{{news.link}}" target="_blank">
+                        <img class="img-fluid" alt="Responsive image" src="{{news.image}}" alt="IMG-PRODUCT" >
+                    </a>
+                </div>
+                <div class="col-9">
+                    <h5><a href="{{news.link}}" target="_blank">{{news.heading}}</a></h5>
+                    <p>{{news.discription}}</p>
+                </div>
+            </div>
+        <hr>
+        {% endfor %}
+        </div>
+        <div class="col-3">
+            <table class="table table-sm table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">Topics</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>{% for channel in channels %}
+                    <tr>
+                        <th><a href="{% url 'web_scrap:topic_news' channel.pk %}" class="btn-sm btn-danger">{{channel}}</a></th>
+                    </tr>{% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div> 
+</div>
+<div class="jumbotron" style="padding: 1rem 2rem;">
+    <center>
+        <a href='{% url "web_scrap:list" %}' class="btn btn-danger">View All News</a>
+    </center>
+</div>
+{% endblock content %}

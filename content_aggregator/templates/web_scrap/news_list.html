@@ -1,0 +1,26 @@
+{% extends 'index_base.html' %}
+
+{% block content %}
+<div class="jumbotron" style="padding: 1rem 2rem;">
+    <center><h1>News</h1>
+    </form>
+</center>
+</div>
+<div class="container">
+        {% for news in news_list %}
+        <div class='row'>
+            <div class="col-3">
+                <a href="{{news.url}}" target="_blank">
+                    <img class="img-fluid" alt="Responsive image" src="{{news.image_link}}" alt="IMG-PRODUCT" >
+                </a>
+            </div>
+            <div class="col-9">
+                <h5><a href="{{news.url}}" target="_blank">{{news.headline}}</a></h5>
+                <p>{{news.text}}</p>
+            </div>
+        </div>
+        <hr>
+        {% endfor %}
+    </div> 
+</div>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rup Narayan-Portfolio</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{% static 'portfolio/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'portfolio/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static 'portfolio/lib/bootstrap/css/bootstrap.min.css' %} " rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static 'portfolio/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'portfolio/lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'portfolio/lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'portfolio/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'portfolio/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'portfolio/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: DevFolio
+    Theme URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body id="page-top">
+
+  <!--/ Nav Star /-->
+  <nav class="navbar navbar-trans navbar-expand-md fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll" href="{% url 'home'%}">RN Raj</a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll active" href="{% url 'home'%}">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--/ Nav End /-->
+
+
+  
+  <!--/ Section Contact-Footer Star /-->
+  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static 'portfolio/img/overlay-bg.jpg'%})">
+    <div class="overlay-mf"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="contact-mf">
+            <div id="contact" class="box-shadow-full">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="title-box-2">
+                    {% if messages %}
+                         {% for message in messages %}
+                             <div class="text-center alert alert-{{ message.tags }}" style="background:#32a852;
+                             height: 50px;">
+                              <h6 style="color: white;">{{ message }}</h6>
+                             </div>
+                         {% endfor %}
+                      {% endif %}
+                    <h5 class="title-left">
+                      Send Message Us
+                    </h5>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-11">
+                      <form method="POST">{% csrf_token %}
+                        {{ form|crispy }}
+                        <input type="submit" name="" value="Submit" class="btn btn-primary">
+                      </form>
+                      
+                      
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="title-box-2 pt-4 pt-md-0">
+                    <h5 class="title-left">
+                      Get in Touch
+                    </h5>
+                  </div>
+                  <div class="more-info">
+                    <p class="lead">
+                     Rup Narayan Rajbanshi
+                    </p>
+                    <ul class="list-ico">
+                      <li><span class="ion-ios-location"></span>Mechinagar-7, Itabhatta, Jhapa,Nepal</li>
+                      <li><span class="ion-ios-telephone"></span>+977-9816915726</li>
+                      <li><span class="ion-email"></span>rswarup03@gmail.com</li>
+                    </ul>
+                  </div>
+                  <div class="socials">
+                    <ul>
+                      <li><a href="https://np.linkedin.com/in/rup-narayan-rajbanshi-72a132169"><span class="ico-circle"><i class="fa fa-linkedin"></i></span></a></li>
+                      <li><a href="https://www.facebook.com/rupnarayan.rajbanshi"><span class="ico-circle"><i class="ion-social-facebook"></i></span></a></li>
+                      <li><a href="https://www.instagram.com/swarooprajbanshi/"><span class="ico-circle"><i class="ion-social-instagram"></i></span></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+  <!--/ Section Contact-footer End /-->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static 'portfolio/lib/jquery/jquery.min.js'%}"></script>
+  <script src="{% static 'portfolio/lib/jquery/jquery-migrate.min.js'%}"></script>
+  <script src="{% static 'portfolio/lib/popper/popper.min.js'%}"></script>
+  <script src="{% static 'portfolio/lib/bootstrap/js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'portfolio/lib/easing/easing.min.js'%}"></script>
+  <script src="{% static 'portfolio/lib/counterup/jquery.waypoints.min.js'%}"></script>
+  <script src="{% static 'portfolio/lib/counterup/jquery.counterup.js'%}"></script>
+  <script src="{% static 'portfolio/lib/owlcarousel/owl.carousel.min.js'%}"></script>
+  <script src="{% static 'portfolio/lib/lightbox/js/lightbox.min.js'%}"></script>
+  <script src="{% static 'portfolio/lib/typed/typed.min.js'%}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'portfolio/contactform/contactform.js'%}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'portfolio/js/main.js'%}"></script>
+
+</body>
+</html>
